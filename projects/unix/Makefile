@@ -168,10 +168,10 @@ ifeq ($(ARCH_DETECTED), 64BITS_32)
     $(error Do not use the BITS=32 option with FreeBSD, use -m32 and -m elf_i386)
   endif
   ifneq ($(OS), OSX)
+    CFLAGS += -m32
     ifeq ($(OS), MINGW)
       LDFLAGS += -Wl,-m,i386pe
     else
-      CFLAGS += -m32
       LDFLAGS += -Wl,-m,elf_i386
     endif
   endif
