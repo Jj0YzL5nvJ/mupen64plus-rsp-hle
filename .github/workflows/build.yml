@@ -32,7 +32,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Get build dependencies and arrange the environment
         run: |
-          git clone --depth 1 -b ci-rearr --single-branch https://github.com/Jj0YzL5nvJ/mupen64plus-core.git ../mupen64plus-core
+          git clone --depth 1 https://github.com/mupen64plus/mupen64plus-core.git ../mupen64plus-core
           export C_CLANG_SUFFIX="-15" C_GCC_SUFFIX="-12"
           ./../mupen64plus-core/.github/workflows/scripts/ci_install_ubuntu_deps.sh ${{ matrix.arch }} ${{ matrix.cc }}
       - name: Build and related stuff, backup binaries
@@ -79,7 +79,7 @@ jobs:
             mingw-w64-${{ matrix.cross }}-ntldd
       - name: Build and related stuff, backup binaries
         run: |
-          git clone --depth 1 -b ci-rearr --single-branch https://github.com/Jj0YzL5nvJ/mupen64plus-core.git ../mupen64plus-core
+          git clone --depth 1 https://github.com/mupen64plus/mupen64plus-core.git ../mupen64plus-core
           ./../mupen64plus-core/.github/workflows/scripts/ci_build.sh ${{ matrix.arch }} ${{ matrix.cc }}
       - name: Backup dependencies, etc...
         run: |
@@ -111,7 +111,7 @@ jobs:
       - uses: microsoft/setup-msbuild@v2
       - name: Build and related stuff, backup binaries
         run: |
-          git clone --depth 1 -b ci-rearr --single-branch https://github.com/Jj0YzL5nvJ/mupen64plus-core.git ..\mupen64plus-core
+          git clone --depth 1 https://github.com/mupen64plus/mupen64plus-core.git ..\mupen64plus-core
           set TOOLSET=${{ matrix.toolset }}
           .\..\mupen64plus-core\.github\workflows\scripts\ci_msvc_build.cmd ${{ matrix.arch }}
       - name: Backup dependencies, etc...
@@ -135,7 +135,7 @@ jobs:
           path: binaries
       - name: Get some tools
         run: |
-          git clone --depth 1 -b ci-rearr --single-branch https://github.com/Jj0YzL5nvJ/mupen64plus-core.git ../mupen64plus-core
+          git clone --depth 1 https://github.com/mupen64plus/mupen64plus-core.git ../mupen64plus-core
           sudo apt-get update
           sudo apt-get -y install hashdeep
       - name: Creating new artifacts and update nightly-build
